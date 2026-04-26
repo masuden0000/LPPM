@@ -6,20 +6,25 @@ import { useRouter } from "next/navigation";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { useAuthStore } from "@/stores/auth-store";
 
-export default function Home() {
+export function GuestGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const hydrated = useHydrated();
   const currentUserId = useAuthStore((state) => state.currentUserId);
 
   useEffect(() => {
-    if (!hydrated) return;
-    if (currentUserId) router.replace("/dashboard");
-    else router.replace("/login");
+    if (hydrated && currentUserId) {
+      router.replace("/dashboard");
+    }
   }, [currentUserId, hydrated, router]);
 
-  return (
-    <div className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">
-      Menyiapkan halaman...
-    </div>
-  );
+  if (!hydrated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">
+        Memuat...
+      </div>
+    );
+  }
+
+  if (currentUserId) return null;
+  return <>{children}</>;
 }
