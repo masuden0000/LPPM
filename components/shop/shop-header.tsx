@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, Menu, Search, ShoppingCart, UserCircle } from "lucide-react";
+import { ClipboardList, LogOut, Menu, Search, ShoppingCart, UserCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -84,7 +84,7 @@ export function ShopHeader() {
             size="icon-sm"
             className="text-slate-700 hover:bg-slate-100 lg:hidden"
             aria-label="Cari"
-            onClick={() => { }}
+            onClick={() => router.push("/etalase")}
           >
             <Search className="size-4" />
           </Button>
@@ -131,6 +131,13 @@ export function ShopHeader() {
                 >
                   <UserCircle className="size-4" />
                   Profil
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => router.push("/lacak-pesanan")}
+                  className="mt-1 cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-foreground focus:bg-muted focus:text-foreground"
+                >
+                  <ClipboardList className="size-4" />
+                  Lacak Pesanan
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={doLogout}

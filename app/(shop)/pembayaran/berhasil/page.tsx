@@ -92,13 +92,13 @@ export default function PaymentSuccessPage() {
             Belanja Lagi
           </Link>
           <Link
-            href="/profil"
+            href={`/lacak-pesanan?orderId=${encodeURIComponent(order.id)}`}
             className={cn(
               buttonVariants({ variant: "outline" }),
               "h-12 flex-1 justify-center rounded-full font-semibold text-base",
             )}
           >
-            Ke Profil
+            Lacak Pesanan
           </Link>
         </div>
       </div>

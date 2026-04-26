@@ -37,10 +37,7 @@ export default function BookDetailsPage() {
   const hasDiscount = Boolean(discount?.originalPrice && discount.originalPrice > book.harga);
 
   const onAddToCart = () => {
-    const result = addItem(book);
-    if (!result.ok) {
-      toast.error(result.message);
-    }
+    addItem(book);
   };
 
   const onShare = async () => {
