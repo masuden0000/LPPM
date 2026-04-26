@@ -1,6 +1,7 @@
 "use client";
 
 import { ShoppingCart } from "lucide-react";
+import Link from "next/link";
 import { toast } from "sonner";
 
 import { BookTypeIcon } from "@/components/shop/book-type-icon";
@@ -34,27 +35,27 @@ export function ProductCard({
 
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-background shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05),0px_4px_6px_-4px_rgba(0,0,0,0.05)]">
-      <div className="relative aspect-[3/4] overflow-hidden border-b border-border bg-muted/40 p-6">
+      <Link href={`/etalase/${book.id}`} className="relative block aspect-[3/4] overflow-hidden border-b border-border bg-muted/40 p-6 group">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imageUrl}
           alt={book.judul}
-          className="h-full w-full object-cover shadow-md transition-transform duration-300 hover:scale-[1.03]"
+          className="h-full w-full object-cover shadow-md transition-transform duration-300 group-hover:scale-[1.03]"
         />
         {hasDiscount ? (
           <div className="absolute left-4 top-4 rounded-full bg-rose-600 px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
             {discountLabel ?? "Special Offer"}
           </div>
         ) : null}
-      </div>
+      </Link>
       <div className="flex flex-1 flex-col p-5">
         <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-md bg-muted px-2 py-1 text-xs font-medium leading-none text-muted-foreground">
           <BookTypeIcon type={meta} className="size-3.5 shrink-0 align-middle" />
           <span className="leading-none">{meta}</span>
         </span>
-        <h3 className="line-clamp-2 min-h-12 text-base font-semibold leading-tight tracking-[-0.01em] text-foreground">
+        <Link href={`/etalase/${book.id}`} className="line-clamp-2 min-h-12 text-base font-semibold leading-tight tracking-[-0.01em] text-foreground hover:underline hover:text-primary transition-colors">
           {book.judul}
-        </h3>
+        </Link>
         <p className="mb-6 mt-1 text-sm text-muted-foreground">{book.penulis}</p>
         <div className="mt-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book Details - ScholarSource</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1b1b1d",
+                        "surface": "#fbf8fa",
+                        "on-surface-variant": "#45474c",
+                        "on-tertiary-fixed-variant": "#554428",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0edef",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#56657c",
+                        "tertiary-container": "#261903",
+                        "secondary": "#505f76",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d8e2fc",
+                        "outline-variant": "#c5c6cd",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae7e9",
+                        "surface-tint": "#545f74",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#111c2e",
+                        "on-primary-fixed-variant": "#3d475b",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#d4e3ff",
+                        "surface-variant": "#e4e2e3",
+                        "inverse-surface": "#303032",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "on-secondary-fixed": "#0c1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#75777d",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#7a849b",
+                        "surface-bright": "#fbf8fa",
+                        "on-tertiary-fixed": "#261903",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "primary-fixed-dim": "#bcc7df",
+                        "surface-container-highest": "#e4e2e3",
+                        "on-tertiary-container": "#968160",
+                        "surface-container-low": "#f6f3f5",
+                        "primary-container": "#111c2e",
+                        "on-background": "#1b1b1d",
+                        "tertiary-fixed-dim": "#dcc39e",
+                        "tertiary-fixed": "#f9dfb8",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bcc7df",
+                        "background": "#fbf8fa",
+                        "inverse-on-surface": "#f3f0f2",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dcd9db"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-padding": "48px",
+                        "margin-page": "64px",
+                        "unit": "4px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xl": "48px",
+                        "md": "16px",
+                        "max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption-xs": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "caption-xs": ["10px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col pt-16">
+<!-- TopNavBar -->
+<nav class="bg-white/90 dark:bg-slate-950/90 backdrop-blur-md fixed top-0 left-0 w-full z-50 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-[1280px] mx-auto px-8 md:px-16 flex items-center justify-between h-16">
+<div class="flex items-center gap-8">
+<a class="text-xl font-bold tracking-tighter text-slate-950 dark:text-white" href="#">ScholarSource</a>
+<div class="hidden md:flex gap-6 font-sans text-sm font-medium tracking-wide">
+<a class="text-slate-900 dark:text-white border-b-2 border-slate-900 dark:border-slate-50 pb-1 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">Catalog</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">Collections</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">Journals</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">Institutions</a>
+</div>
+</div>
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-50">
+<button class="active:scale-95 transition-transform duration-150"><span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span></button>
+<button class="active:scale-95 transition-transform duration-150"><span class="material-symbols-outlined" data-icon="account_circle">account_circle</span></button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto px-8 md:px-16 py-margin-page">
+<!-- Book Core Info Area (Bento-style layout) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl">
+<!-- Book Cover Column -->
+<div class="col-span-1 md:col-span-4 lg:col-span-3">
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 group">
+<img alt="Book Cover" class="w-full h-auto object-cover aspect-[2/3] group-hover:scale-[1.02] transition-transform duration-500" data-alt="Minimalist abstract book cover design with geometric shapes in deep navy and cream on a light grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOTk18uSpqaq55Jh0rfw59ZY0LgcjYpbGDPIY_EA_Hjd8BNrlBimSMaPYAyQ-n_3ftP1IoIIBlCsHnqbOIDGLvDnL9I8w4I32NdZjTaHD9VYnvhi03J2jGwOEytfBBhKt8NW0c1_WQGhNSP9H1rsI6S6R3TBbvTYAOabrIib_5pjUJpk9oYB2iia4gK6WLpfd7a4_yki44gbCHMXMjUmznWDu7uuMmR0kDbK9pXIA7c9ShTas1LZ7Pi0ZeOn6U2sknFgxWo3345B4"/>
+</div>
+<div class="mt-md flex justify-center gap-sm">
+<button class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-secondary-container flex items-center justify-center transition-colors"><span class="material-symbols-outlined text-sm" data-icon="share">share</span></button>
+<button class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-secondary-container flex items-center justify-center transition-colors"><span class="material-symbols-outlined text-sm" data-icon="bookmark">bookmark</span></button>
+</div>
+</div>
+<!-- Book Details Column -->
+<div class="col-span-1 md:col-span-8 lg:col-span-9 flex flex-col justify-start">
+<div class="mb-sm flex items-center gap-sm">
+<span class="inline-block px-3 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm uppercase tracking-wider">Social Sciences</span>
+<span class="flex items-center text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined icon-fill text-[16px] text-on-tertiary-container mr-1" data-icon="star">star</span>
+                        4.8 (124 Reviews)
+                    </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-unit">Metodologi Penelitian Sosial</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md">By <a class="text-primary hover:underline font-medium" href="#">Dr. Sri Lestari</a></p>
+<div class="flex items-baseline gap-sm mb-lg">
+<span class="font-headline-lg text-headline-lg text-on-surface">Rp 120.000</span>
+<span class="font-body-md text-body-md text-outline line-through">Rp 150.000</span>
+</div>
+<div class="mb-lg max-w-2xl">
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3">
+                        A comprehensive guide to qualitative and quantitative research methods tailored for social sciences in the Indonesian academic context. This foundational text covers research design, data collection, and analytical frameworks required for rigorous institutional research.
+                    </p>
+<a class="text-primary font-label-md text-label-md hover:underline mt-sm inline-block" href="#synopsis">Read full synopsis</a>
+</div>
+<div class="flex flex-col sm:flex-row gap-md mt-auto pt-lg border-t border-surface-variant">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-3 rounded active:scale-95 transition-transform duration-150 flex items-center justify-center gap-sm min-w-[200px]">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+                        Add to Cart
+                    </button>
+<button class="bg-surface text-on-surface border border-outline-variant font-label-md text-label-md px-xl py-3 rounded hover:bg-surface-container-low active:scale-95 transition-all duration-150 flex items-center justify-center min-w-[200px]">
+                        Preview Sample
+                    </button>
+</div>
+</div>
+</div>
+<!-- Detailed Sections Grid (Bento) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Content Area (Synopsis & Reviews) -->
+<div class="lg:col-span-2 space-y-xl">
+<!-- Synopsis -->
+<section class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant" id="synopsis">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Description</h2>
+<div class="font-body-md text-body-md text-on-surface-variant space-y-md">
+<p>This textbook provides an in-depth exploration of research methodologies specific to the social sciences. Designed primarily for undergraduate and graduate students, it bridges the gap between theoretical frameworks and practical application in field research.</p>
+<p>Key topics include structuring a research proposal, ethical considerations in human subjects research, advanced survey design, ethnographic observation, and statistical analysis using contemporary software tools. The author draws on extensive field experience to provide contextual examples that resonate with institutional research standards.</p>
+</div>
+</section>
+<!-- Reviews -->
+<section class="bg-surface-container-lowest p-lg rounded-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-md border-b border-surface-variant pb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Ratings &amp; Reviews</h2>
+<button class="text-primary font-label-md text-label-md hover:underline">Write a Review</button>
+</div>
+<div class="space-y-md">
+<!-- Review Item -->
+<div class="border-b border-surface-variant pb-md last:border-0 last:pb-0">
+<div class="flex items-center gap-sm mb-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center font-label-sm text-label-sm text-on-secondary-container">AR</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Prof. Andi Rahman</p>
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined icon-fill text-[14px]" data-icon="star">star</span>
+<span class="material-symbols-outlined icon-fill text-[14px]" data-icon="star">star</span>
+<span class="material-symbols-outlined icon-fill text-[14px]" data-icon="star">star</span>
+<span class="material-symbols-outlined icon-fill text-[14px]" data-icon="star">star</span>
+<span class="material-symbols-outlined icon-fill text-[14px]" data-icon="star">star</span>
+</div>
+</div>
+<span class="ml-auto font-caption-xs text-caption-xs text-outline">2 weeks ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">An essential text for our sociology department. Clear, authoritative, and perfectly structured for syllabus integration.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar Area (Details & Author) -->
+<div class="lg:col-span-1 space-y-gutter">
+<!-- Product Details -->
+<section class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md border-b border-surface-variant pb-unit">Product Details</h3>
+<ul class="space-y-sm font-body-md text-body-md">
+<li class="flex justify-between">
+<span class="text-outline">ISBN-13</span>
+<span class="text-on-surface font-medium">978-602-1234-56-7</span>
+</li>
+<li class="flex justify-between">
+<span class="text-outline">Publisher</span>
+<span class="text-on-surface font-medium">LPPM UPNVJ Press</span>
+</li>
+<li class="flex justify-between">
+<span class="text-outline">Publication Date</span>
+<span class="text-on-surface font-medium">August 2023</span>
+</li>
+<li class="flex justify-between">
+<span class="text-outline">Pages</span>
+<span class="text-on-surface font-medium">342</span>
+</li>
+<li class="flex justify-between">
+<span class="text-outline">Language</span>
+<span class="text-on-surface font-medium">Indonesian</span>
+</li>
+<li class="flex justify-between">
+<span class="text-outline">Format</span>
+<span class="text-on-surface font-medium">Paperback</span>
+</li>
+</ul>
+</section>
+<!-- Author Bio -->
+<section class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md border-b border-surface-variant pb-unit">About the Author</h3>
+<div class="flex items-start gap-md mb-sm">
+<img alt="Author Portrait" class="w-16 h-16 rounded-full object-cover border border-outline-variant" data-alt="Professional portrait of an academic woman wearing a blazer, standing in a library with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6tWIPj66qu5XMdxU2kLqZ0soIewywaSGf9evLhI9_5nRAYTELE98EHJWdbI56OrswhCZjnmeE8XHBIVtHss_qV7neBgvQZ9zkEN6QpqiN5AOA5TuxUxHH_a0mwMNfPamkArwYznTjLadx9ab0xdasdKB8smjBekc5zXAbpAx6uTUpiOarkPpW9dz9b9_cpretX0xTgMa4bLD_57-AHMGs4YRFCvY0dFjvAZkDVjg_B_Ne_n1nsXAdbMIQF-ZZ9T9oK1CDaYDemZc"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Dr. Sri Lestari</p>
+<p class="font-caption-xs text-caption-xs text-secondary uppercase tracking-wide">Senior Researcher</p>
+</div>
+</div>
+<p class="font-body-sm text-body-md text-on-surface-variant text-sm">
+                        Dr. Lestari holds a Ph.D. in Sociology and has over 15 years of field research experience across Southeast Asia. She currently serves as a principal investigator at LPPM UPNVJ.
+                    </p>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50">
+<div class="max-w-[1280px] mx-auto px-8 md:px-16 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-semibold text-slate-900 dark:text-white">ScholarSource</div>
+<div class="flex flex-wrap gap-4 font-sans text-xs uppercase tracking-widest text-slate-500 justify-center">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 transition-opacity duration-200 hover:opacity-80" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 transition-opacity duration-200 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 transition-opacity duration-200 hover:opacity-80" href="#">Accessibility</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 transition-opacity duration-200 hover:opacity-80" href="#">Institutional Licensing</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 underline decoration-slate-300 transition-opacity duration-200 hover:opacity-80" href="#">Contact Support</a>
+</div>
+<div class="text-xs text-slate-500">© 2024 ScholarSource Academic Press. Institutional reliability in every page.</div>
+</div>
+</footer>
+</body></html>

@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 
 import { BookTypeIcon } from "@/components/shop/book-type-icon";
 import { ProductCard } from "@/components/shop/product-card";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -113,12 +112,15 @@ export default function EtalasePage() {
                   </div>
                   
                   <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="h-10 shrink-0 border-slate-300 bg-white px-3 hover:bg-slate-50">
-                        <SlidersHorizontal className="mr-2 size-4 text-slate-500" />
-                        <span className="font-normal text-slate-700">Sort by</span>
-                        <ChevronDown className="ml-2 size-4 text-slate-500" />
-                      </Button>
+                    <DropdownMenuTrigger
+                      className={cn(
+                        "inline-flex h-10 shrink-0 items-center rounded-md border border-slate-300 bg-white px-3 text-sm transition-colors outline-none hover:bg-slate-50",
+                        "focus-visible:ring-2 focus-visible:ring-slate-300"
+                      )}
+                    >
+                      <SlidersHorizontal className="mr-2 size-4 text-slate-500" />
+                      <span className="font-normal text-slate-700">Sort by</span>
+                      <ChevronDown className="ml-2 size-4 text-slate-500" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56">
                       <DropdownMenuRadioGroup value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
