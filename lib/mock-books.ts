@@ -8,7 +8,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 150000,
     stok: 12,
     coverUrl:
-      "/books/book-1.jpg",
+      "/books/book-1.webp",
     kategori: "Teknologi",
   },
   {
@@ -18,7 +18,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 120000,
     stok: 8,
     coverUrl:
-      "/books/book-2.jpg",
+      "/books/book-2.webp",
     kategori: "Bisnis",
   },
   {
@@ -28,7 +28,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 180000,
     stok: 5,
     coverUrl:
-      "/books/book-3.jpg",
+      "/books/book-3.webp",
     kategori: "Sains",
   },
   {
@@ -38,7 +38,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 200000,
     stok: 7,
     coverUrl:
-      "/books/book-4.jpg",
+      "/books/book-4.webp",
     kategori: "Teknik",
   },
   {
@@ -48,7 +48,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 80000,
     stok: 20,
     coverUrl:
-      "/books/book-5.jpg",
+      "/books/book-5.webp",
     kategori: "Bisnis",
   },
   {
@@ -58,7 +58,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 165000,
     stok: 7,
     coverUrl:
-      "/books/book-6.jpg",
+      "/books/book-6.webp",
     kategori: "Teknologi",
   },
   {
@@ -68,7 +68,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 145000,
     stok: 10,
     coverUrl:
-      "https://images.unsplash.com/photo-1611071523954-62e099f0dc2d?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Sains",
   },
   {
@@ -78,7 +78,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 220000,
     stok: 6,
     coverUrl:
-      "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Teknik",
   },
   {
@@ -88,7 +88,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 135000,
     stok: 11,
     coverUrl:
-      "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Sastra",
   },
   {
@@ -98,7 +98,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 110000,
     stok: 14,
     coverUrl:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Novel",
   },
   {
@@ -108,7 +108,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 140000,
     stok: 9,
     coverUrl:
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Sejarah",
   },
   {
@@ -118,7 +118,7 @@ export const MOCK_BOOKS: Book[] = [
     harga: 128000,
     stok: 13,
     coverUrl:
-      "https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
     kategori: "Psikologi",
   },
 ];

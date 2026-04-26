@@ -49,41 +49,33 @@ export function ShopHeader() {
             </p>
           </div>
         </Link>
+        
+        <nav className="mr-6 hidden items-center gap-6 md:flex">
+          <Link
+            href="/dashboard"
+            className={cn(
+              "pb-1 text-sm font-medium transition-colors",
+              pathname === "/dashboard"
+                ? "border-b-2 border-primary text-primary"
+                : "border-b-2 border-transparent text-black hover:border-primary hover:text-primary"
+            )}
+          >
+            Beranda
+          </Link>
+          <Link
+            href="/etalase"
+            className={cn(
+              "pb-1 text-sm font-medium transition-colors",
+              pathname === "/etalase"
+                ? "border-b-2 border-primary text-primary"
+                : "border-b-2 border-transparent text-black hover:border-primary hover:text-primary"
+            )}
+          >
+            Etalase
+          </Link>
+        </nav>
 
         <div className="flex items-center gap-2 md:gap-3">
-          <nav className="mr-6 hidden items-center gap-6 md:flex">
-            <Link
-              href="/dashboard"
-              className={cn(
-                "pb-1 text-sm font-medium transition-colors",
-                pathname === "/dashboard"
-                  ? "border-b-2 border-primary text-primary"
-                  : "border-b-2 border-transparent text-black hover:border-primary hover:text-primary"
-              )}
-            >
-              Beranda
-            </Link>
-            <Link
-              href="/etalase"
-              className={cn(
-                "pb-1 text-sm font-medium transition-colors",
-                pathname === "/etalase"
-                  ? "border-b-2 border-primary text-primary"
-                  : "border-b-2 border-transparent text-black hover:border-primary hover:text-primary"
-              )}
-            >
-              Etalase
-            </Link>
-          </nav>
-
-          <div className="hidden h-10 w-60 items-center rounded-full border border-slate-200 bg-slate-100 px-3 lg:flex">
-            <Search className="mr-2 size-4 text-slate-500" />
-            <Input
-              className="h-8 border-none bg-transparent px-0 text-sm text-slate-900 shadow-none placeholder:text-slate-500 focus-visible:ring-0"
-              placeholder="Cari publikasi..."
-            />
-          </div>
-
           <Button
             variant="ghost"
             size="icon-sm"

@@ -3,6 +3,7 @@
 import { ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
 
+import { BookTypeIcon } from "@/components/shop/book-type-icon";
 import { formatRupiah } from "@/lib/format";
 import type { Book } from "@/lib/types";
 import { useCartStore } from "@/stores/cart-store";
@@ -47,8 +48,9 @@ export function ProductCard({
         ) : null}
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <span className="mb-3 inline-flex w-fit rounded-md bg-muted px-2 py-1 text-xs font-medium text-muted-foreground">
-          {meta}
+        <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-md bg-muted px-2 py-1 text-xs font-medium leading-none text-muted-foreground">
+          <BookTypeIcon type={meta} className="size-3.5 shrink-0 align-middle" />
+          <span className="leading-none">{meta}</span>
         </span>
         <h3 className="line-clamp-2 min-h-12 text-base font-semibold leading-tight tracking-[-0.01em] text-foreground">
           {book.judul}
