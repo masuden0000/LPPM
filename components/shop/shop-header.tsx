@@ -15,16 +15,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth-store";
-import { useCartStore } from "@/stores/cart-store";
 
 export function ShopHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const currentUserId = useAuthStore((state) => state.currentUserId);
   const logout = useAuthStore((state) => state.logout);
-  const cartCount = useCartStore((state) =>
-    state.items.reduce((acc, item) => acc + item.qty, 0)
-  );
   const isLoggedIn = Boolean(currentUserId);
 
   const doLogout = () => {
@@ -111,11 +107,6 @@ export function ShopHeader() {
               aria-label="Keranjang"
             >
               <ShoppingCart className="size-5" />
-              {cartCount > 0 ? (
-                <span className="absolute -top-1.5 -right-1.5 inline-flex min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground shadow-sm">
-                  {cartCount}
-                </span>
-              ) : null}
             </Link>
           ) : null}
 

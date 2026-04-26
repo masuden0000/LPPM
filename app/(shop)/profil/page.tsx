@@ -171,7 +171,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-5xl space-y-8 pb-16 pt-4">
+    <div className="mx-auto w-full max-w-[1440px] space-y-8 px-5 pb-16 pt-4 md:px-8 xl:px-10">
       <div className="px-2">
         <Link href="/etalase" className="inline-flex items-center gap-1 text-sm font-medium text-black">
           <ArrowLeft className="size-4" />

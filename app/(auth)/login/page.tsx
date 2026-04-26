@@ -50,7 +50,6 @@ export default function LoginPage() {
       toast.error(result.message);
       return;
     }
-    toast.success(result.message);
     router.push("/dashboard");
   };
 
