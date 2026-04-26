@@ -1,6 +1,7 @@
 export type UserRole = "PENGGUNA";
 
 export interface Address {
+  id: string;
   namaPenerima: string;
   telepon: string;
   alamatLengkap: string;
@@ -15,7 +16,7 @@ export interface User {
   email: string;
   passwordHashMock: string;
   role: UserRole;
-  alamatDefault?: Address;
+  alamatList: Address[];
   createdAt: string;
 }
 

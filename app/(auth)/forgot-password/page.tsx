@@ -97,7 +97,7 @@ export default function ForgotPasswordPage() {
         </Form>
         <p className="text-center text-sm text-muted-foreground">
           <Link href="/login" className="font-medium text-primary hover:underline">
-            Kembali ke login
+            Kembali
           </Link>
         </p>
       </CardContent>

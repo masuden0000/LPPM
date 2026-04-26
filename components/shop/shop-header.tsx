@@ -12,16 +12,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/stores/auth-store";
+import { useCartStore } from "@/stores/cart-store";
 
 export function ShopHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const currentUserId = useAuthStore((state) => state.currentUserId);
   const logout = useAuthStore((state) => state.logout);
+  const cartItems = useCartStore((state) => state.items);
   const isLoggedIn = Boolean(currentUserId);
+  // Sum quantities so badge reflects total units, not just distinct titles.
+  const cartItemCount = cartItems.reduce((total, item) => total + item.qty, 0);
 
   const doLogout = () => {
     logout();
@@ -49,7 +52,7 @@ export function ShopHeader() {
             </p>
           </div>
         </Link>
-        
+
         <nav className="mr-6 hidden items-center gap-6 md:flex">
           <Link
             href="/dashboard"
@@ -99,6 +102,11 @@ export function ShopHeader() {
               aria-label="Keranjang"
             >
               <ShoppingCart className="size-5" />
+              {cartItemCount > 0 ? (
+                <span className="absolute -right-1 -top-1 inline-flex min-h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold leading-none text-primary-foreground">
+                  {cartItemCount > 99 ? "99+" : cartItemCount}
+                </span>
+              ) : null}
             </Link>
           ) : null}
 

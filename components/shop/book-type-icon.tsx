@@ -1,9 +1,9 @@
 "use client";
 
 import {
+  BookOpenText,
   BookText,
   Brain,
-  BookOpenText,
   Briefcase,
   Cpu,
   FileText,
@@ -44,12 +44,13 @@ function resolveBookType(type: string): BookTypeKey {
   const normalized = type.trim().toLowerCase();
 
   if (normalized === "semua" || normalized === "all books") return "all";
-  if (normalized.includes("journal")) return "journal";
+  if (normalized.includes("journal") || normalized.includes("jurnal")) return "journal";
   // Handle common typo variants like "textboot" from manual labels.
-  if (normalized.includes("textbook") || normalized.includes("textboot")) return "textbook";
-  if (normalized.includes("report")) return "report";
+  if (normalized.includes("textbook") || normalized.includes("textboot") || normalized.includes("buku ajar")) return "textbook";
+  if (normalized.includes("report") || normalized.includes("laporan")) return "report";
   if (normalized.includes("monograph")) return "monograph";
-  if (normalized.includes("proceeding")) return "proceeding";
+  if (normalized.includes("monograf")) return "monograph";
+  if (normalized.includes("proceeding") || normalized.includes("prosiding")) return "proceeding";
   if (normalized.includes("teknologi")) return "teknologi";
   if (normalized.includes("bisnis")) return "bisnis";
   if (normalized.includes("sains")) return "sains";

@@ -1,4 +1,5 @@
 import { GuestGuard } from "@/components/guards/guest-guard";
+import { AUTH_BRANDING_ASSETS } from "@/lib/mock-content";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,7 +8,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         {/* Background image layer for auth pages */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-55"
-          style={{ backgroundImage: "url('/images/universitas.webp')" }}
+          style={{ backgroundImage: `url('${AUTH_BRANDING_ASSETS.backgroundImageUrl}')` }}
         />
         {/* Gradient fade so image blends softly into the page background */}
         <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/45" />

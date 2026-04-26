@@ -1,14 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+import { OtpCodeInput } from "@/components/auth/otp-code-input";
+import { BackNavLink } from "@/components/shared/back-nav-link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,7 +23,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { useAuthStore } from "@/stores/auth-store";
 
 const otpSchema = z.object({
@@ -41,7 +40,6 @@ export default function VerifyOtpPage() {
   const verifyOtp = useAuthStore((state) => state.verifyOtp);
   const forgotToken = useAuthStore((state) => state.forgotPasswordToken);
   const initialEmail = searchParams.get("email") ?? "";
-  const otpRefs = useRef<Array<HTMLInputElement | null>>([]);
 
   const form = useForm<OtpInput>({
     resolver: zodResolver(otpSchema),
@@ -69,14 +67,7 @@ export default function VerifyOtpPage() {
   return (
     <Card className="w-full rounded-xl border border-border bg-background shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05),0px_4px_6px_-4px_rgba(0,0,0,0.05)]">
       <CardContent className="space-y-8 p-8">
-        <button
-          type="button"
-          onClick={() => router.push("/forgot-password")}
-          className="inline-flex items-center gap-1 text-sm font-medium text-black"
-        >
-          <ArrowLeft className="size-4" />
-          Kembali
-        </button>
+        <BackNavLink href="/forgot-password" />
         <div className="space-y-2 text-center">
           <h1 className="text-3xl font-semibold tracking-[-0.01em] text-foreground">
             Verifikasi OTP
@@ -101,58 +92,7 @@ export default function VerifyOtpPage() {
                 <FormItem className="space-y-1.5">
                   <FormLabel>Kode OTP</FormLabel>
                   <FormControl>
-                    <div className="flex items-center justify-center gap-2 sm:gap-3">
-                      {Array.from({ length: 6 }).map((_, index) => {
-                        const value = field.value?.[index] ?? "";
-
-                        return (
-                          <Input
-                            key={index}
-                            ref={(el) => {
-                              otpRefs.current[index] = el;
-                            }}
-                            value={value}
-                            maxLength={1}
-                            inputMode="numeric"
-                            pattern="[0-9]*"
-                            className="h-14 w-11 rounded-lg text-center text-2xl font-semibold sm:w-12"
-                            onChange={(event) => {
-                              const rawValue = event.target.value.replace(/\D/g, "");
-                              const char = rawValue.slice(-1);
-                              const current = field.value ?? "";
-                              const chars = current.padEnd(6, " ").split("");
-
-                              chars[index] = char || " ";
-                              const nextValue = chars.join("").replace(/\s/g, "");
-                              field.onChange(nextValue);
-
-                              if (char && index < 5) {
-                                otpRefs.current[index + 1]?.focus();
-                              }
-                            }}
-                            onKeyDown={(event) => {
-                              if (event.key === "Backspace") {
-                                const current = field.value ?? "";
-                                if (!current[index] && index > 0) {
-                                  otpRefs.current[index - 1]?.focus();
-                                }
-                              }
-                            }}
-                            onPaste={(event) => {
-                              event.preventDefault();
-                              const pasted = event.clipboardData
-                                .getData("text")
-                                .replace(/\D/g, "")
-                                .slice(0, 6);
-                              field.onChange(pasted);
-
-                              const focusIndex = Math.min(pasted.length, 5);
-                              otpRefs.current[focusIndex]?.focus();
-                            }}
-                          />
-                        );
-                      })}
-                    </div>
+                    <OtpCodeInput value={field.value} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -24,12 +24,11 @@ type AuthState = {
   requestPasswordReset: (email: string) => ResetResult;
   verifyOtp: (email: string, otp: string) => Result;
   resetPassword: (email: string, password: string) => Result;
-  updateCurrentUserProfile: (payload: {
-    nama: string;
-    email: string;
-    alamatDefault: Address;
-  }) => Result;
+  updateCurrentUserProfile: (payload: { nama: string; email: string }) => Result;
   updateCurrentUserPassword: (password: string) => Result;
+  addAddress: (address: Omit<Address, "id">) => Result;
+  updateAddress: (address: Address) => Result;
+  removeAddress: (addressId: string) => Result;
   getCurrentUser: () => User | null;
 };
 
@@ -65,6 +64,7 @@ export const useAuthStore = create<AuthState>()(
           email: cleanEmail,
           passwordHashMock: makePasswordHash(password),
           role: "PENGGUNA",
+          alamatList: [],
           createdAt: new Date().toISOString(),
         };
 
@@ -150,7 +150,7 @@ export const useAuthStore = create<AuthState>()(
 
         return { ok: true, message: "Kata sandi berhasil diperbarui." };
       },
-      updateCurrentUserProfile: ({ nama, email, alamatDefault }) => {
+      updateCurrentUserProfile: ({ nama, email }) => {
         const user = get().getCurrentUser();
         if (!user) {
           return { ok: false, message: "Pengguna tidak ditemukan." };
@@ -168,7 +168,7 @@ export const useAuthStore = create<AuthState>()(
         set((state) => ({
           users: state.users.map((item) =>
             item.id === user.id
-              ? { ...item, nama: nama.trim(), email: cleanEmail, alamatDefault }
+              ? { ...item, nama: nama.trim(), email: cleanEmail }
               : item,
           ),
         }));
@@ -190,6 +190,61 @@ export const useAuthStore = create<AuthState>()(
         }));
 
         return { ok: true, message: "Kata sandi berhasil diperbarui." };
+      },
+      addAddress: (address) => {
+        const user = get().getCurrentUser();
+        if (!user) return { ok: false, message: "Pengguna tidak ditemukan." };
+        const currentList = user.alamatList ?? [];
+        if (currentList.length >= 5) {
+          return { ok: false, message: "Maksimal 5 alamat tersimpan." };
+        }
+
+        const newAddress: Address = { ...address, id: crypto.randomUUID() };
+        set((state) => ({
+          users: state.users.map((item) =>
+            item.id === user.id
+              ? { ...item, alamatList: [...(item.alamatList ?? []), newAddress] }
+              : item,
+          ),
+        }));
+
+        return { ok: true, message: "Alamat berhasil ditambahkan." };
+      },
+      updateAddress: (address) => {
+        const user = get().getCurrentUser();
+        if (!user) return { ok: false, message: "Pengguna tidak ditemukan." };
+
+        set((state) => ({
+          users: state.users.map((item) =>
+            item.id === user.id
+              ? {
+                  ...item,
+                  alamatList: (item.alamatList ?? []).map((a) =>
+                    a.id === address.id ? address : a,
+                  ),
+                }
+              : item,
+          ),
+        }));
+
+        return { ok: true, message: "Alamat berhasil diperbarui." };
+      },
+      removeAddress: (addressId) => {
+        const user = get().getCurrentUser();
+        if (!user) return { ok: false, message: "Pengguna tidak ditemukan." };
+
+        set((state) => ({
+          users: state.users.map((item) =>
+            item.id === user.id
+              ? {
+                  ...item,
+                  alamatList: (item.alamatList ?? []).filter((a) => a.id !== addressId),
+                }
+              : item,
+          ),
+        }));
+
+        return { ok: true, message: "Alamat berhasil dihapus." };
       },
       getCurrentUser: () => {
         const state = get();

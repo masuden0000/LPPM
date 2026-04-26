@@ -1,9 +1,10 @@
 "use client";
 
+import { ArrowRight, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { BackNavLink } from "@/components/shared/back-nav-link";
+import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatRupiah } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -28,12 +29,9 @@ export default function CartPage() {
 
   if (rows.length === 0) {
     return (
-      <div className="mx-auto w-full max-w-[1440px] space-y-8 px-5 pb-14 pt-4 md:px-8 md:pb-16 md:pt-8 xl:px-10">
+      <div className="mx-auto w-full max-w-[1440px] space-y-8 px-5 pb-16 pt-4 md:px-8 xl:px-10">
         <div className="mb-6">
-          <Link href="/dashboard" className="inline-flex items-center gap-1 text-sm font-medium text-black">
-            <ArrowLeft className="size-4" />
-            Kembali
-          </Link>
+          <BackNavLink href="/dashboard" />
         </div>
         <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-[-0.01em] text-foreground md:mb-6 md:text-3xl">Keranjang Belanja</h2>
         <Card className="flex flex-col items-center justify-center border-border p-12 text-center shadow-sm">
@@ -44,7 +42,7 @@ export default function CartPage() {
           <p className="mb-8 text-muted-foreground">
             Belum ada buku di keranjang. Ayo cari buku yang Anda butuhkan di katalog kami.
           </p>
-          <Link href="/dashboard" className={cn(buttonVariants({ variant: "default" }), "h-10 px-8 rounded-lg")}>
+          <Link href="/etalase" className={cn(buttonVariants({ variant: "default" }), "h-10 px-8 rounded-lg")}>
             Mulai Belanja
           </Link>
         </Card>
@@ -53,12 +51,9 @@ export default function CartPage() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1440px] space-y-8 px-5 pb-14 pt-4 md:px-8 md:pb-16 md:pt-8 xl:px-10">
+    <div className="mx-auto w-full max-w-[1440px] space-y-8 px-5 pb-16 pt-4 md:px-8 xl:px-10">
       <div className="mb-6">
-        <Link href="/dashboard" className="inline-flex items-center gap-1 text-sm font-medium text-black">
-          <ArrowLeft className="size-4" />
-          Kembali
-        </Link>
+        <BackNavLink href="/dashboard" />
       </div>
       <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-[-0.01em] text-foreground md:mb-6 md:text-3xl">Keranjang Belanja</h2>
       
@@ -115,18 +110,18 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Pengiriman</span>
-                <span className="text-foreground">Dihitung saat checkout</span>
+                <span className="text-foreground">Dihitung saat pembayaran</span>
               </div>
             </div>
             <div className="mb-6 flex items-center justify-between">
               <span className="text-2xl font-semibold text-foreground">Total</span>
               <span className="text-3xl font-bold text-foreground">{formatRupiah(subtotal)}</span>
             </div>
-            <Link href="/checkout" className={cn(buttonVariants({ variant: "default" }), "flex h-10 w-full items-center justify-center gap-2 rounded-lg")}>
+            <Link href="/checkout" className={cn(buttonVariants({ variant: "default" }), "flex h-12 w-full items-center justify-center gap-2 rounded-lg")}>
               Lanjut Checkout
               <ArrowRight className="size-4" />
             </Link>
-            <p className="mt-4 flex items-center justify-center gap-1 text-center text-xs text-muted-foreground">
+            <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground">
               <Lock className="size-3" />
               Pembayaran aman dan terenkripsi oleh LPPM UPNVJ.
             </p>

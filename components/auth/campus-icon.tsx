@@ -3,7 +3,7 @@
 import { Building2 } from "lucide-react";
 import { useMemo, useState } from "react";
 
-const CAMPUS_ICON_EXTENSIONS = ["png", "svg", "webp", "jpg", "jpeg", "ico"];
+import { getCampusIconSources } from "@/lib/mock-content";
 
 type CampusIconProps = {
   className?: string;
@@ -11,14 +11,7 @@ type CampusIconProps = {
 };
 
 export function CampusIcon({ className, imageClassName }: CampusIconProps) {
-  const sources = useMemo(
-    () =>
-      CAMPUS_ICON_EXTENSIONS.flatMap((ext) => [
-        `/icon_campus.${ext}`,
-        `/images/icon_campus.${ext}`,
-      ]),
-    []
-  );
+  const sources = useMemo(() => getCampusIconSources(), []);
   const [sourceIndex, setSourceIndex] = useState(0);
   const currentSource = sources[sourceIndex];
 
@@ -36,7 +29,7 @@ export function CampusIcon({ className, imageClassName }: CampusIconProps) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={currentSource}
-        alt="Campus icon"
+        alt="Ikon kampus"
         className={imageClassName}
         onError={() => setSourceIndex((prev) => prev + 1)}
       />

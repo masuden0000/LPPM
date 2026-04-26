@@ -65,6 +65,7 @@ export default function RegisterPage() {
       return;
     }
 
+    toast.success("Akun berhasil dibuat.");
     router.push("/dashboard");
   };
 

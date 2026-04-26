@@ -9,13 +9,15 @@ import { useAuthStore } from "@/stores/auth-store";
 type ProfilePayload = {
   nama: string;
   email: string;
-  alamatDefault: Address;
   passwordBaru?: string;
 };
 
 type ProfileState = {
   lastUpdatedAt: string | null;
   updateProfile: (payload: ProfilePayload) => { ok: boolean; message: string };
+  addAddress: (address: Omit<Address, "id">) => { ok: boolean; message: string };
+  updateAddress: (address: Address) => { ok: boolean; message: string };
+  removeAddress: (addressId: string) => { ok: boolean; message: string };
 };
 
 export const useProfileStore = create<ProfileState>()(
@@ -27,7 +29,6 @@ export const useProfileStore = create<ProfileState>()(
         const result = authState.updateCurrentUserProfile({
           nama: payload.nama,
           email: payload.email,
-          alamatDefault: payload.alamatDefault,
         });
 
         if (!result.ok) return result;
@@ -41,6 +42,18 @@ export const useProfileStore = create<ProfileState>()(
 
         set({ lastUpdatedAt: new Date().toISOString() });
         return { ok: true, message: "Profil berhasil disimpan." };
+      },
+      addAddress: (address) => {
+        const result = useAuthStore.getState().addAddress(address);
+        return result;
+      },
+      updateAddress: (address) => {
+        const result = useAuthStore.getState().updateAddress(address);
+        return result;
+      },
+      removeAddress: (addressId) => {
+        const result = useAuthStore.getState().removeAddress(addressId);
+        return result;
       },
     }),
     {

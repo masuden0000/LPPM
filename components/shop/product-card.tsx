@@ -44,7 +44,7 @@ export function ProductCard({
         />
         {hasDiscount ? (
           <div className="absolute left-4 top-4 rounded-full bg-rose-600 px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
-            {discountLabel ?? "Special Offer"}
+            {discountLabel ?? "Penawaran Spesial"}
           </div>
         ) : null}
       </Link>

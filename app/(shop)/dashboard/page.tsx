@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -8,47 +7,17 @@ import {
   FileText,
 } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { ProductCard } from "@/components/shop/product-card";
 import { Button } from "@/components/ui/button";
+import { UI_IMAGE_ASSETS } from "@/lib/mock-content";
 import { useCatalogStore } from "@/stores/catalog-store";
 
-const HERO_SLIDES = [
-  {
-    title: "Research knowledge, now easier to browse and collect.",
-    description:
-      "Explore scientific journals, faculty textbooks, and research reports from LPPM UPN Veteran Jakarta in one storefront.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80&fm=webp",
-  },
-  {
-    title: "Curated campus publications with a cleaner and more modern browsing flow.",
-    description:
-      "Find highlighted releases, faculty works, and academic references faster with a storefront that stays focused on content.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80&fm=webp",
-  },
-  {
-    title: "Journals, reports, and books arranged in a single storefront experience.",
-    description:
-      "Browse recent publications, spotlight collections, and limited offers without jumping between separate catalog views.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80&fm=webp",
-  },
-] as const;
-
-const DISCIPLINE_IMAGE =
-  "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1400&q=80&fm=webp";
-
-const CARD_IMAGES = [
-  "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80&fm=webp",
-  "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=80&fm=webp",
-  "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80&fm=webp",
-  "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80&fm=webp",
-  "https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&w=900&q=80&fm=webp",
-];
-
-const PRODUCT_META = ["Journal", "Textbook", "Report", "Monograph", "Proceeding"];
+const HERO_SLIDES = UI_IMAGE_ASSETS.dashboard.heroSlides;
+const DISCIPLINE_IMAGE = UI_IMAGE_ASSETS.dashboard.disciplineImage;
+const CARD_IMAGES = UI_IMAGE_ASSETS.dashboard.cardImages;
+const PRODUCT_META = UI_IMAGE_ASSETS.dashboard.productMeta;
 
 export default function DashboardPage() {
   const books = useCatalogStore((state) => state.books);
@@ -75,7 +44,7 @@ export default function DashboardPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={currentSlide.imageUrl}
-                alt="Research community and academic publications"
+                alt="Komunitas riset dan publikasi akademik"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -124,7 +93,7 @@ export default function DashboardPage() {
 
         <section className="mb-14 md:mb-20">
           <h2 className="mb-5 text-2xl font-semibold leading-tight tracking-[-0.01em] text-foreground md:mb-6 md:text-3xl">
-            Curated Disciplines
+            Disiplin Pilihan
           </h2>
           <div className="grid h-auto grid-cols-12 gap-4 md:h-[500px] md:gap-6">
             <article className="relative col-span-12 row-span-2 overflow-hidden rounded-xl border border-border bg-background/80 p-6 shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.05),0px_4px_6px_-4px_rgba(0,0,0,0.05)] backdrop-blur-sm md:col-span-8 md:p-8">
@@ -132,21 +101,21 @@ export default function DashboardPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={DISCIPLINE_IMAGE}
-                  alt="Academic books in elegant slate palette"
+                  alt="Buku akademik dalam nuansa slate elegan"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
               <div className="relative z-10 flex h-full flex-col justify-end">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                  Featured Series
+                  Seri Unggulan
                 </p>
                 <h3 className="mb-2 text-xl font-semibold tracking-[-0.01em] text-foreground md:text-2xl">
-                  Scientific Journals
+                  Jurnal Ilmiah
                 </h3>
                 <p className="max-w-sm text-sm leading-6 text-muted-foreground">
-                  Peer-reviewed publications spanning health sciences, engineering,
-                  and social studies.
+                  Publikasi telaah sejawat yang mencakup ilmu kesehatan, teknik,
+                  dan ilmu sosial.
                 </p>
               </div>
             </article>
@@ -158,9 +127,9 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold tracking-[-0.01em] text-foreground">
-                  Textbooks
+                  Buku Ajar
                 </h3>
-                <p className="text-sm leading-6 text-muted-foreground">Authored by faculty experts.</p>
+                <p className="text-sm leading-6 text-muted-foreground">Ditulis oleh para ahli dosen.</p>
               </div>
             </article>
 
@@ -171,9 +140,9 @@ export default function DashboardPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold tracking-[-0.01em] text-foreground">
-                  Research Reports
+                  Laporan Riset
                 </h3>
-                <p className="text-sm leading-6 text-muted-foreground">Annual findings and case studies.</p>
+                <p className="text-sm leading-6 text-muted-foreground">Temuan tahunan dan studi kasus.</p>
               </div>
             </article>
           </div>
@@ -182,13 +151,13 @@ export default function DashboardPage() {
         <section className="mb-10 md:mb-12">
           <div className="mb-5 flex flex-col gap-2 border-b border-border pb-4 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
             <h2 className="text-2xl font-semibold leading-tight tracking-[-0.01em] text-foreground md:text-3xl">
-              Recent Publications
+              Publikasi Terbaru
             </h2>
             <Link
               href="/dashboard"
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
             >
-              View Complete Catalog
+              Lihat Katalog Lengkap
               <ArrowRight className="size-4" />
             </Link>
           </div>
@@ -212,21 +181,21 @@ export default function DashboardPage() {
           <div className="text-center md:text-left">
             <p className="text-lg font-semibold tracking-[-0.01em] text-foreground">LPPM UPNVJ STORE</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              (c) 2026 LPPM UPN Veteran Jakarta. Academic Excellence and Innovation.
+              (c) 2026 LPPM UPN Veteran Jakarta. Keunggulan Akademik dan Inovasi.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-muted-foreground">
             <Link href="/dashboard" className="hover:text-foreground">
-              Privacy Policy
+              Kebijakan Privasi
             </Link>
             <Link href="/dashboard" className="hover:text-foreground">
-              Terms of Service
+              Syarat Layanan
             </Link>
             <Link href="/dashboard" className="hover:text-foreground">
-              Research Repository
+              Repositori Riset
             </Link>
             <Link href="/dashboard" className="hover:text-foreground">
-              Contact Support
+              Hubungi Dukungan
             </Link>
           </div>
         </div>

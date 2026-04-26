@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 
-import { MOCK_BOOKS } from "@/lib/mock-books";
+import { BOOK_LIST } from "@/lib/mock-content";
 import type { Book } from "@/lib/types";
 
 type CatalogState = {
@@ -11,6 +11,6 @@ type CatalogState = {
 };
 
 export const useCatalogStore = create<CatalogState>((_, get) => ({
-  books: MOCK_BOOKS,
+  books: BOOK_LIST,
   getBookById: (bookId) => get().books.find((book) => book.id === bookId),
 }));

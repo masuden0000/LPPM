@@ -66,8 +66,8 @@ export default function EtalasePage() {
         <div className="grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
           <aside className="sticky hidden h-fit rounded-xl border border-slate-200 bg-white p-5 shadow-[0_8px_20px_-16px_rgba(15,23,42,0.45)] lg:block">
             <div className="mb-5 border-b border-slate-200 pb-4">
-              <h2 className="text-lg font-semibold tracking-[-0.01em] text-slate-900">Categories</h2>
-              <p className="mt-1 text-xs font-medium text-slate-500">Academic Disciplines</p>
+              <h2 className="text-lg font-semibold tracking-[-0.01em] text-slate-900">Kategori</h2>
+              <p className="mt-1 text-xs font-medium text-slate-500">Disiplin Akademik</p>
             </div>
             <div className="space-y-1.5">
               {categories.map((category) => (
@@ -95,7 +95,7 @@ export default function EtalasePage() {
           <div>
             <div className="mb-6 rounded-xl border border-slate-200 bg-white p-4 shadow-[0_8px_20px_-16px_rgba(15,23,42,0.45)]">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h1 className="text-2xl font-semibold tracking-[-0.01em] text-slate-900">All Books</h1>
+                <h1 className="text-2xl font-semibold tracking-[-0.01em] text-slate-900">Semua Buku</h1>
                 <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
                   <div className="relative flex-1 sm:w-64">
                     <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-slate-400" />
@@ -106,7 +106,7 @@ export default function EtalasePage() {
                         setSearchInput(value);
                         setSearchKeyword(value.trim());
                       }}
-                      placeholder="Search title or author..."
+                      placeholder="Cari judul atau penulis..."
                       className="h-10 w-full rounded-md border-slate-300 bg-white pl-9 text-slate-900 placeholder:text-slate-400"
                     />
                   </div>
@@ -119,16 +119,16 @@ export default function EtalasePage() {
                       )}
                     >
                       <SlidersHorizontal className="mr-2 size-4 text-slate-500" />
-                      <span className="font-normal text-slate-700">Sort by</span>
+                      <span className="font-normal text-slate-700">Urutkan</span>
                       <ChevronDown className="ml-2 size-4 text-slate-500" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-56">
                       <DropdownMenuRadioGroup value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-                        <DropdownMenuRadioItem value="newest">Newest Arrivals</DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="judul-asc">Title A-Z</DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="judul-desc">Title Z-A</DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="harga-asc">Price: Low to High</DropdownMenuRadioItem>
-                        <DropdownMenuRadioItem value="harga-desc">Price: High to Low</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="newest">Terbaru</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="judul-asc">Judul A-Z</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="judul-desc">Judul Z-A</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="harga-asc">Harga: Murah ke Mahal</DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem value="harga-desc">Harga: Mahal ke Murah</DropdownMenuRadioItem>
                       </DropdownMenuRadioGroup>
                     </DropdownMenuContent>
                   </DropdownMenu>
