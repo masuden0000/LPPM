@@ -15,13 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useCatalogStore } from "@/stores/catalog-store";
+import { DISCOUNT_BY_BOOK_ID } from "@/lib/discounts";
 
 type SortOption = "newest" | "judul-asc" | "judul-desc" | "harga-asc" | "harga-desc";
-
-const DISCOUNT_BY_BOOK_ID: Record<string, { originalPrice: number; discountLabel: string }> = {
-  "book-2": { originalPrice: 155000, discountLabel: "Diskon 23%" },
-  "book-8": { originalPrice: 275000, discountLabel: "Diskon 20%" },
-};
 
 export default function EtalasePage() {
   const books = useCatalogStore((state) => state.books);

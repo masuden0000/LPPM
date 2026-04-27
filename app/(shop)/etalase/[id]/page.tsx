@@ -13,12 +13,7 @@ import { formatRupiah } from "@/lib/format";
 import { buildBookImageGallery } from "@/lib/mock-content";
 import { useCartStore } from "@/stores/cart-store";
 import { useCatalogStore } from "@/stores/catalog-store";
-
-// Mock discounts to mirror etalase
-const DISCOUNT_BY_BOOK_ID: Record<string, { originalPrice: number; discountLabel: string }> = {
-  "book-2": { originalPrice: 155000, discountLabel: "Diskon 23%" },
-  "book-8": { originalPrice: 275000, discountLabel: "Diskon 20%" },
-};
+import { DISCOUNT_BY_BOOK_ID } from "@/lib/discounts";
 
 export default function BookDetailsPage() {
   const params = useParams();
