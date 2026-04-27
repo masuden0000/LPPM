@@ -41,3 +41,15 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# local ai/design artifacts
+.stitch/
+.codex-temp/
+.codex-stitch-tmp/
+stitch-*.html
+stitch_*.html
+rg_*.txt
+dl.js
+remove-toasts.js
+AGENTS.md
+CLAUDE.md
