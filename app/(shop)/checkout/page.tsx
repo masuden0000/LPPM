@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
+import { OrderSummaryCard } from "@/components/shop/order-summary-card";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -173,6 +174,7 @@ export default function CheckoutPage() {
 
   const shippingFee = 25000;
   const adminFee = 15000;
+  const totalItems = items.reduce((acc, item) => acc + item.qty, 0);
   const totalPrice = subtotal + shippingFee + adminFee;
 
   return (
@@ -452,53 +454,41 @@ export default function CheckoutPage() {
 
         {/* Right Column: Order Summary (Sticky) */}
         <aside className="w-full lg:w-[380px]">
-          <div className="sticky top-24 bg-card border border-border rounded-xl p-6 shadow-sm">
-            <h2 className="text-xl font-bold text-foreground mb-6">Ringkasan Pesanan</h2>
-
-            <div className="flex flex-col gap-3 mb-6 border-b border-border pb-6">
-              <div className="flex justify-between items-center">
-                <span className="text-base text-muted-foreground">
-                  Subtotal ({items.reduce((acc, item) => acc + item.qty, 0)} item)
-                </span>
-                <span className="text-base font-medium text-foreground">
-                  {formatRupiah(subtotal)}
-                </span>
+          <OrderSummaryCard
+            title="Ringkasan Pesanan"
+            rows={[
+              {
+                label: `Subtotal (${totalItems} item)`,
+                value: formatRupiah(subtotal),
+              },
+              {
+                label: "Pengiriman",
+                value: formatRupiah(shippingFee),
+              },
+              {
+                label: "Biaya Admin",
+                value: formatRupiah(adminFee),
+              },
+            ]}
+            totalLabel="Total Harga"
+            totalValue={formatRupiah(totalPrice)}
+            action={
+              <Button
+                type="button"
+                onClick={handleCheckout}
+                className="flex h-12 w-full items-center justify-center gap-2 rounded-full text-base font-semibold transition-all hover:opacity-90 active:scale-95"
+              >
+                <Lock className="size-5" />
+                Konfirmasi dan Bayar
+              </Button>
+            }
+            footer={
+              <div className="flex items-center justify-center gap-1.5 text-muted-foreground">
+                <ShieldCheck className="size-4" />
+                <span className="text-xs font-medium">Transaksi aman terenkripsi</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-base text-muted-foreground">Pengiriman</span>
-                <span className="text-base font-medium text-foreground">
-                  {formatRupiah(shippingFee)}
-                </span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-base text-muted-foreground">Biaya Admin</span>
-                <span className="text-base font-medium text-foreground">
-                  {formatRupiah(adminFee)}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-end mb-8">
-              <span className="text-lg font-bold text-foreground">Total Harga</span>
-              <span className="text-2xl font-bold tracking-tight text-foreground">
-                {formatRupiah(totalPrice)}
-              </span>
-            </div>
-
-            <Button
-              type="button"
-              onClick={handleCheckout}
-              className="w-full h-12 rounded-full font-semibold text-base flex justify-center items-center gap-2 hover:opacity-90 active:scale-95 transition-all"
-            >
-              <Lock className="size-5" />
-              Konfirmasi dan Bayar
-            </Button>
-
-            <div className="mt-4 flex items-center justify-center gap-1.5 text-muted-foreground">
-              <ShieldCheck className="size-4" />
-              <span className="text-xs font-medium">Transaksi aman terenkripsi</span>
-            </div>
-          </div>
+            }
+          />
         </aside>
       </div>
 

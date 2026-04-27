@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
-import { Badge } from "@/components/ui/badge";
+import { OrderSummaryCard } from "@/components/shop/order-summary-card";
 import { Button } from "@/components/ui/button";
 import { formatRupiah, paymentMethodLabel } from "@/lib/format";
 import type { PaymentMethod } from "@/lib/types";
@@ -29,8 +29,10 @@ export default function PaymentPage() {
     (acc, item) => acc + item.hargaSnapshot * item.qty,
     0,
   );
-  const biayaLayanan = 4000;
-  const total = subtotal + biayaLayanan;
+  const shippingFee = 25000;
+  const adminFee = 15000;
+  const totalItems = items.reduce((acc, item) => acc + item.qty, 0);
+  const total = subtotal + shippingFee + adminFee;
 
   useEffect(() => {
     if (!checkoutAddress) {
@@ -125,35 +127,25 @@ export default function PaymentPage() {
 
         {/* Right: Order Summary (Sticky) */}
         <aside className="w-full lg:w-[380px]">
-          <div className="sticky top-24 bg-card border border-border rounded-xl p-6 shadow-sm">
-            <h2 className="mb-6 text-xl font-bold text-foreground">Ringkasan Pembayaran</h2>
-
-            <div className="mb-6 flex flex-col gap-3 border-b border-border pb-6">
-              <div className="flex items-center justify-between">
-                <span className="text-base text-muted-foreground">Jumlah Item</span>
-                <Badge variant="secondary">{items.length}</Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-base text-muted-foreground">Subtotal</span>
-                <span className="text-base font-medium text-foreground">
-                  {formatRupiah(subtotal)}
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-base text-muted-foreground">Biaya Layanan</span>
-                <span className="text-base font-medium text-foreground">
-                  {formatRupiah(biayaLayanan)}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-end justify-between">
-              <span className="text-lg font-bold text-foreground">Total Bayar</span>
-              <span className="text-2xl font-bold tracking-tight text-foreground">
-                {formatRupiah(total)}
-              </span>
-            </div>
-          </div>
+          <OrderSummaryCard
+            title="Ringkasan Pembayaran"
+            rows={[
+              {
+                label: `Subtotal (${totalItems} item)`,
+                value: formatRupiah(subtotal),
+              },
+              {
+                label: "Pengiriman",
+                value: formatRupiah(shippingFee),
+              },
+              {
+                label: "Biaya Admin",
+                value: formatRupiah(adminFee),
+              },
+            ]}
+            totalLabel="Total Bayar"
+            totalValue={formatRupiah(total)}
+          />
         </aside>
       </div>
     </div>

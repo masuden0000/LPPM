@@ -139,18 +139,18 @@ export const UI_IMAGE_ASSETS = {
     disciplineImage:
       "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1400&q=80&fm=webp",
     cardImages: [
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80&fm=webp",
-      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=80&fm=webp",
-      "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80&fm=webp",
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80&fm=webp",
-      "https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&w=900&q=80&fm=webp",
+      "/books/book-3.webp",
+      "/books/book-4.webp",
+      "/books/book-5.webp",
+      "/books/book-6.webp",
+      "/books/book-7.webp",
     ],
     productMeta: ["Jurnal", "Buku Ajar", "Laporan", "Monograf", "Prosiding"],
   },
   bookDetail: {
     fallbackGalleryImages: [
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=600&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=600&auto=format&fit=crop",
+      "/books/book-8.webp",
+      "/books/book-5.webp",
     ],
   },
 } as const;

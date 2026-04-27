@@ -3,6 +3,7 @@
 import { ArrowRight, Lock, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import Link from "next/link";
 
+import { OrderSummaryCard } from "@/components/shop/order-summary-card";
 import { BackNavLink } from "@/components/shared/back-nav-link";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -18,6 +19,7 @@ export default function CartPage() {
   const removeItem = useCartStore((state) => state.removeItem);
   const subtotal = useCartStore((state) => state.getSubtotal());
   const books = useCatalogStore((state) => state.books);
+  const totalItems = items.reduce((acc, item) => acc + item.qty, 0);
 
   const rows = items
     .map((item) => {
@@ -97,35 +99,36 @@ export default function CartPage() {
 
         {/* Order Summary */}
         <div className="lg:col-span-4">
-          <Card className="sticky top-32 rounded-lg border-border p-6">
-            <h2 className="mb-6 text-2xl font-semibold text-foreground">Ringkasan Pesanan</h2>
-            <div className="mb-6 space-y-3 border-b border-border pb-6 text-base">
-              <div className="flex justify-between text-muted-foreground">
-                <span>Subtotal</span>
-                <span className="text-foreground">{formatRupiah(subtotal)}</span>
-              </div>
-              <div className="flex justify-between text-muted-foreground">
-                <span>Biaya Layanan</span>
-                <span className="text-foreground">{formatRupiah(0)}</span>
-              </div>
-              <div className="flex justify-between text-muted-foreground">
-                <span>Pengiriman</span>
-                <span className="text-foreground">Dihitung saat pembayaran</span>
-              </div>
-            </div>
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-2xl font-semibold text-foreground">Total</span>
-              <span className="text-3xl font-bold text-foreground">{formatRupiah(subtotal)}</span>
-            </div>
-            <Link href="/checkout" className={cn(buttonVariants({ variant: "default" }), "flex h-12 w-full items-center justify-center gap-2 rounded-lg")}>
-              Lanjut Checkout
-              <ArrowRight className="size-4" />
-            </Link>
-            <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground">
-              <Lock className="size-3" />
-              Pembayaran aman dan terenkripsi oleh LPPM UPNVJ.
-            </p>
-          </Card>
+          <OrderSummaryCard
+            title="Ringkasan Pesanan"
+            rows={[
+              {
+                label: `Subtotal (${totalItems} item)`,
+                value: formatRupiah(subtotal),
+              },
+            ]}
+            totalLabel="Total Harga"
+            totalValue={formatRupiah(subtotal)}
+            stickyTopClassName="top-32"
+            action={
+              <Link
+                href="/checkout"
+                className={cn(
+                  buttonVariants({ variant: "default" }),
+                  "flex h-12 w-full items-center justify-center gap-2 rounded-lg",
+                )}
+              >
+                Lanjut Checkout
+                <ArrowRight className="size-4" />
+              </Link>
+            }
+            footer={
+              <p className="flex items-center justify-center gap-1 text-center text-xs text-muted-foreground">
+                <Lock className="size-3" />
+                Pembayaran aman dan terenkripsi oleh LPPM UPNVJ.
+              </p>
+            }
+          />
         </div>
       </div>
     </div>
